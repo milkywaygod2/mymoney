@@ -11,17 +11,17 @@ public class MyMoneyController {
 	//1. static.html은 컨트롤러도 필요없음 주소로 바로접근
 	
 	//2. template으로 만든 view를 리턴하는 방법
-	@GetMapping("ViewHello") //from index.html
+	@GetMapping("tViewHello") //from index.html
 	public String hello(Model beanModel) {
 		beanModel.addAttribute("keyName", "몽두~~");
-		return "ViewHello"; //to ViewHello.html
+		return "tViewHello"; //to tViewHello.html
 	}
 	
 	// template + requestParam 조합
-	@GetMapping("ViewHelloTemplate") // /ViewHelloMVC?adressId={id}, 정적html은 확장자필수 but 템플릿엔진 사용시 생략가능
+	@GetMapping("tViewHelloTemplate") // /tViewHelloMVC?adressId={id}, 정적html은 확장자필수 but 템플릿엔진 사용시 생략가능
 	public String helloMVC(@RequestParam("addressId") String id, Model beanModel) {
 		beanModel.addAttribute("keyName", id); // html 본문에서 사용할 키-벨류
-		return "ViewHelloTemplate";
+		return "tViewHelloTemplate";
 	}
 
 	//3. 메소드리턴타입 리턴 (api방식)
@@ -46,17 +46,17 @@ public class MyMoneyController {
 	}
 	
 	static class HelloApi {
-		private String id;
-		private int n1 = 1;
-		private float f1 = 1.f;
+		private String m_id;
+		private int m_n1 = 1;
+		private float m_f1 = 1.f;
 		
-		public int getN1() { return n1; }
-		public void setN1(int n1) { this.n1 = n1; }
+		public int getN1() { return m_n1; }
+		public void setN1(int n1) { this.m_n1 = n1; }
 		
-		public float getF1() { return f1; }
-		public void setF1(float f1) { this.f1 = f1; }
+		public float getF1() { return m_f1; }
+		public void setF1(float f1) { this.m_f1 = f1; }
 		
-		public String getId() { return id; }
-		public void setId(String id) { this.id = id; }
+		public String getId() { return m_id; }
+		public void setId(String id) { this.m_id = id; }
 	}
 }
